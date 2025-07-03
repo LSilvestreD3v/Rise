@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RISE - A Terceira Voz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Tela de Login -->
+    <div id="loginScreen" class="screen active">
+        <div class="login-container">
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQ1IiBzdHJva2U9IiNBMDM5MkEiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0iIzJBMTkxMiIvPgo8cGF0aCBkPSJNMzUgNjVMNTAgMzVMNjUgNjVIMzVaIiBmaWxsPSIjQTAzOTJBIi8+Cjx0ZXh0IHg9IjUwIiB5PSI4NSIgZm9udC1mYW1pbHk9IkJlYmFzIE5ldWUiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiNBMDM5MkEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlJJU0U8L3RleHQ+Cjwvc3ZnPgo=" alt="RISE Logo" class="logo-img">
+                </div>
+                <h1 class="app-title">RISE</h1>
+                <p class="app-subtitle">A Terceira Voz</p>
+            </div>
+            
+            <div class="login-form">
+                <div class="input-group">
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="loginPassword" placeholder="Senha" required>
+                </div>
+                <button class="btn-primary" onclick="login()">INICIAR TRANSFORMAÇÃO</button>
+                <p class="login-footer">Não tem conta? <span onclick="showSignup()" class="link">Criar Perfil</span></p>
+            </div>
+            
+            <div class="quote">
+                "Você tem poder sobre sua mente - não sobre eventos externos. Perceba isso, e você encontrará força."
+                <span class="quote-author">- Marco Aurélio</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tela de Cadastro -->
+    <div id="signupScreen" class="screen">
+        <div class="signup-container">
+            <h2>CRIAR PERFIL</h2>
+            <div class="signup-form">
+                <div class="input-group">
+                    <input type="text" id="signupName" placeholder="Nome Completo" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="signupEmail" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="signupPassword" placeholder="Senha" required>
+                </div>
+                <button class="btn-primary" onclick="signup()">FORJAR IDENTIDADE</button>
+                <p class="signup-footer">Já tem conta? <span onclick="showLogin()" class="link">Fazer Login</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tela de Criação da Terceira Voz -->
+    <div id="thirdVoiceScreen" class="screen">
+        <div class="third-voice-container">
+            <h2>CRIE SUA TERCEIRA VOZ</h2>
+            <p class="description">Defina a versão de você que não conhece o medo</p>
+            
+            <div class="voice-form">
+                <div class="input-group">
+                    <label>Nome da sua Persona Vencedora:</label>
+                    <input type="text" id="personaName" placeholder="Ex: Lucas Invictus" required>
+                </div>
+                
+                <div class="input-group">
+                    <label>Seus Sonhos Específicos:</label>
+                    <textarea id="dreams" placeholder="Casa com garagem subterrânea, Ford Bronco, empresa firme, restaurante para mãe..." rows="4"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label>Sua Frase de Poder:</label>
+                    <input type="text" id="powerPhrase" placeholder="Hoje é seu DIA UM - dia de fazer!" required>
+                </div>
+                
+                <button class="btn-primary" onclick="createThirdVoice()">ATIVAR TERCEIRA VOZ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Principal -->
+    <div id="dashboardScreen" class="screen">
+        <div class="dashboard-container">
+            <header class="dashboard-header">
+                <div class="user-greeting">
+                    <h1 id="userGreeting">Bom dia, <span id="personaNameDisplay">Guerreiro</span></h1>
+                    <p class="date" id="currentDate"></p>
+                </div>
+                <div class="user-avatar" onclick="showProfile()">
+                    <div class="avatar-circle">
+                        <span id="userInitials">U</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="impulse-card">
+                <h3>IMPULSO DO DIA</h3>
+                <p class="impulse-quote" id="dailyImpulse">"A disciplina é liberdade. Quanto mais disciplinado você for, mais livre será."</p>
+                <p class="impulse-author">- David Goggins</p>
+                <button class="btn-secondary" onclick="acceptChallenge()">ACEITAR DESAFIO</button>
+            </div>
+
+            <div class="missions-section">
+                <h3>MISSÕES DE HOJE</h3>
+                <div class="missions-list" id="missionsList">
+                    <!-- Missões serão carregadas aqui -->
+                </div>
+                <button class="btn-add" onclick="addMission()">+ NOVA MISSÃO</button>
+            </div>
+
+            <div class="progress-section">
+                <h3>SEU PROGRESSO</h3>
+                <div class="progress-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="completedMissions">0</span>
+                        <span class="stat-label">Missões Completas</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="currentStreak">0</span>
+                        <span class="stat-label">Dias Consecutivos</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="totalPoints">0</span>
+                        <span class="stat-label">Pontos Totais</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="emergency-section">
+                <button class="btn-emergency" onclick="activateChaosMode()">MODO CAOS</button>
+                <p class="emergency-text">Para momentos de crise emocional</p>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="nav-item active" onclick="showDashboard()">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Início</span>
+            </div>
+            <div class="nav-item" onclick="showMissions()">
+                <span class="nav-icon">🎯</span>
+                <span class="nav-label">Missões</span>
+            </div>
+            <div class="nav-item" onclick="showCommunity()">
+                <span class="nav-icon">👥</span>
+                <span class="nav-label">Comunidade</span>
+            </div>
+            <div class="nav-item" onclick="showProfile()">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Perfil</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Tela de Modo Caos -->
+    <div id="chaosScreen" class="screen">
+        <div class="chaos-container">
+            <h2 class="chaos-title">MODO CAOS ATIVADO</h2>
+            <p class="chaos-subtitle">Respiração guiada para recuperação</p>
+            
+            <div class="breathing-circle" id="breathingCircle">
+                <div class="breathing-text" id="breathingText">INSPIRE</div>
+            </div>
+            
+            <div class="breathing-instructions">
+                <p id="breathingInstructions">Inspire por 4 segundos</p>
+            </div>
+            
+            <div class="chaos-actions">
+                <button class="btn-secondary" onclick="startBreathing()">INICIAR RESPIRAÇÃO</button>
+                <button class="btn-primary" onclick="exitChaosMode()">SAIR DO MODO CAOS</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Nova Missão -->
+    <div id="missionModal" class="modal">
+        <div class="modal-content">
+            <h3>NOVA MISSÃO</h3>
+            <div class="input-group">
+                <label>Título da Missão:</label>
+                <input type="text" id="missionTitle" placeholder="Ex: Treinar por 30 minutos">
+            </div>
+            <div class="input-group">
+                <label>Categoria:</label>
+                <select id="missionCategory">
+                    <option value="physical">Físico</option>
+                    <option value="mental">Mental</option>
+                    <option value="professional">Profissional</option>
+                    <option value="spiritual">Espiritual</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Dificuldade:</label>
+                <select id="missionDifficulty">
+                    <option value="1">Fácil</option>
+                    <option value="2">Médio</option>
+                    <option value="3">Difícil</option>
+                    <option value="4">Extremo</option>
+                    <option value="5">Impossível</option>
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeMissionModal()">Cancelar</button>
+                <button class="btn-primary" onclick="saveMission()">CRIAR MISSÃO</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+

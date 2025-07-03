@@ -1,0 +1,26 @@
+{
+  "name": "rise-app",
+  "version": "1.0.0",
+  "description": "RISE - A Terceira Voz - Aplicativo de Transformação Pessoal",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 3000",
+    "build": "echo 'Build completed'",
+    "start": "python3 -m http.server 3000"
+  },
+  "keywords": [
+    "rise",
+    "transformacao",
+    "disciplina",
+    "estoicismo",
+    "desenvolvimento-pessoal"
+  ],
+  "author": "Lucas & Manus AI",
+  "license": "MIT",
+  "homepage": "https://rise-app.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/silves-d3v/rise-app"
+  }
+}
+
